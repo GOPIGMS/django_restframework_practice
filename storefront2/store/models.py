@@ -1,5 +1,7 @@
 from django.core.validators import MinValueValidator
 from django.db import models
+from uuid import uuid4
+from django.conf import settings
 
 
 class Promotion(models.Model):
@@ -56,6 +58,7 @@ class Customer(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     membership = models.CharField(
         max_length=1, choices=MEMBERSHIP_CHOICES, default=MEMBERSHIP_BRONZE)
+    user=models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
@@ -95,10 +98,22 @@ class Address(models.Model):
 
 
 class Cart(models.Model):
+    id=models.UUIDField(primary_key=True,default=uuid4)
     created_at = models.DateTimeField(auto_now_add=True)
-
+   
 
 class CartItem(models.Model):
-    cart = models.ForeignKey(Cart, on_delete=models.CASCADE)
+    cart = models.ForeignKey(Cart, on_delete=models.CASCADE, related_name='items')
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
-    quantity = models.PositiveSmallIntegerField()
+    quantity = models.PositiveSmallIntegerField(validators=[MinValueValidator(1)])
+  
+
+    class Meta:
+        unique_together=[['cart','product']]
+
+
+class Review(models.Model):
+    product = models.ForeignKey(Product,on_delete=models.CASCADE,related_name='reviews')
+    name = models.CharField(max_length=255)
+    description = models.TextField()
+    date=models.DateField(auto_now_add=True)

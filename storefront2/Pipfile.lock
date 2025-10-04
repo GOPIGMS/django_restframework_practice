@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "4fbce299ffc59ccfdd680873d93c915b750a768b4ea34f310eb7b8c4c64d62b1"
+            "sha256": "791d7bd899fadea105f1659df8fe6a733f7e824d87c4e989710de943a2db52e5"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -42,6 +42,15 @@
             "markers": "python_version >= '3.9'",
             "version": "==6.0.0"
         },
+        "django-filter": {
+            "hashes": [
+                "sha256:1ec9eef48fa8da1c0ac9b411744b16c3f4c31176c867886e4c48da369c407153",
+                "sha256:4fa48677cf5857b9b1347fed23e355ea792464e0fe07244d1fdfb8a806215b80"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.9'",
+            "version": "==25.1"
+        },
         "djangorestframework": {
             "hashes": [
                 "sha256:166809528b1aced0a17dc66c24492af18049f2c9420dbd0be29422029cfc3ff7",
@@ -50,6 +59,15 @@
             "index": "pypi",
             "markers": "python_version >= '3.9'",
             "version": "==3.16.1"
+        },
+        "drf-nested-routers": {
+            "hashes": [
+                "sha256:815978f802e578fd7035c74040c104909cbe97615de89a275d77e928f4029891",
+                "sha256:dd489c33d667aaa81383ffaa8c74781d2b353d8f0795716ae37fc59ee297b7c4"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8'",
+            "version": "==0.95.0"
         },
         "mysqlclient": {
             "hashes": [

@@ -37,13 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_filters',
     'rest_framework',
     'playground',
     'debug_toolbar',
     'store',
     'store_custom',
     'tags',
-    'likes'
+    'likes',
+  
 ]
 
 MIDDLEWARE = [
@@ -140,3 +142,15 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend',
+        'rest_framework.filters.SearchFilter',
+    ]
+}
+
+REST_FRAMEWORK ={
+    'COERCE_DECIMAL_TO_STRING':False,
+    'PAGE_SIZE':10
+}
